@@ -13,25 +13,25 @@ interface Person {
 
 const PERSONS: Person[] = [
   {
-    id: '66540929C',
-    name: 'Guillermo',
-    phone: '658233335',
-    street: 'Alicante',
-    city: 'Calle Azorín, 24, 03007'
+      "id": "66540929C",
+      "name": "Guillermo",
+      "phone": "123456789",
+      "street": "Alicante",
+      "city": "Calle Vergul, 2, 05841"
   },
   {
-    id: '46170877X',
-    name: 'Tina',
-    phone: '658233335',
-    street: 'Valencia',
-    city: 'Calle Leonardo da Vinci, 7, 41092'
+      "id": "46170877X",
+      "name": "Tina",
+      "phone": "987654321",
+      "street": "Valencia",
+      "city": "Calle Leonardo da Vinci, 7, 41092"
   },
   {
-    id: '30972358Y',
-    name: 'Zoe',
-    phone: null,
-    street: 'Calle de Velázquez, 80, 08901',
-    city: 'Astro'
+      "id": "30972358Y",
+      "name": "Zoe",
+      "phone": null,
+      "street": "Calle de Velázquez, 80, 08901",
+      "city": "Astro"
   }
 ]
 
