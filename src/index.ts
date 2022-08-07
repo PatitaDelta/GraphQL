@@ -1,4 +1,5 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer, UserInputError, gql } from 'apollo-server'
+import { v1 as uuid } from 'uuid'
 // import * as Persons from './persons.json'
 
 interface Person {
@@ -41,13 +42,23 @@ const typeDefs = gql`
         phone: String
         street: String!
         city: String!
-        address: String!
+        address: String
     }
 
     type Query {
         personsCount: Int!
         allPersons: [Person]!
         findPerson(name: String!): Person
+    }
+
+    type Mutation {
+      addPerson(
+        name: String!
+        phone: String
+        street: String!
+        city: String!
+        address: String
+      ): Person
     }
 `
 
@@ -59,6 +70,17 @@ const resolvers = {
   },
   Person: {
     address: (root: Person) => `${root.street}, ${root.city}`
+  },
+  Mutation: {
+    addPerson: (_root: any, args: Person) => {
+      const person: Person = { ...args, id: uuid() };
+
+      if (PERSONS.find((p) => p.name === args.name))
+        throw new UserInputError('Name must be unique', { invalidArgs: args.name })
+      
+      PERSONS.push(person)
+      return person
+    }
   }
 }
 
